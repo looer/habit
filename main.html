@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SelfTrack</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="dashboard">
+        <h1>Today 🔥</h1>
+        <div>
+            <button id="plus" @click.prevent="showAdd">+</button>
+            <h2 id="today">{{today}}</h2>
+            
+        </div>
+        
+        <form v-if="add" @submit.prevent="addHabit">
+            <input type="text" placeholder="Enter a new habit you want to track" v-model="newHabit">
+        </form>
+        
+        
+        <div class="container">
+            <!-- 
+            <label class="item running" for="running">Running</label>   
+            <input type="checkbox" class="item" name="running">
+
+            <label class="item early" for="early">Wake up early</label>
+            <div class="item">
+                <input type="radio" name="early" value="yes">Yes
+                <input type="radio" name="early" value="no" checked>No        
+            </div>
+            -->
+            <!--  buttonClass(habit)     -->
+            <div v-for="habit in habits" class="item">
+                <button v-if="!habit.done" class="button" @click.prevent="complete(habit)" v-bind:style="{ color: habit.color }">{{habit.name}}</button>
+                <button v-else class="button done" v-bind:style="{ backgroundColor: habit.color }">{{habit.name}}</button>
+                <button @click.prevent="removeHabit(habit)">x</button>
+            </div>
+        
+        </div>
+        <button class="large button" @click.prevent="save">{{message}}</button>
+        <blockquote>
+            <p>Consistency is key to success</p>
+            <cite>- a wise man</cite>
+        </blockquote>
+    </div>
+    
+    <script src="main.js"></script>
+
+</body>
+</html>
