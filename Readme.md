@@ -4,7 +4,7 @@ This app helps you track you daily habit such as exercise or meditation.
 
 Developed by _Lorenzo Cella_ using Vue.
 
-![app screenshot](screenshot.png)
+![app screenshot](assets/screenshot.png)
 
 ## How to start
 
